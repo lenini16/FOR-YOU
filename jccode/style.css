@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #1a0b2e 0%, #090410 100%);
+    overflow: hidden;
+    cursor: pointer; /* Sichqoncha kelganda qo'lcha chiqishi uchun */
+}
+
+.animation-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 350px;
+}
+
+/* ASOSIY VERTIKAL YURAKCHA */
+.heart {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    background-color: #ff2a5f;
+    transform: rotate(45deg) scale(0);
+    animation: heartReveal 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    box-shadow: 0 0 50px rgba(255, 42, 95, 0.9);
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+.heart:hover {
+    filter: brightness(1.15); /* Ustiga borganda biroz yaltiraydi */
+}
+
+.heart::before {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background-color: #ff2a5f;
+    border-radius: 50%;
+    left: -55px;
+    top: 0;
+}
+
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background-color: #ff2a5f;
+    border-radius: 50%;
+    left: 0;
+    top: -55px;
+}
+
+/* YURAKCHA OCHILISH ANIMATSIYASI */
+@keyframes heartReveal {
+    0% {
+        transform: rotate(45deg) scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: rotate(45deg) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(45deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* YURAK ATROFIDAGI SEVGI BELGILARI */
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff66b2;
+    opacity: 0;
+    z-index: 5;
+    animation: floatUp 3s ease-in-out infinite;
+}
+
+.fh1 { left: 30px; animation-delay: 1.2s; font-size: 18px; }
+.fh2 { right: 20px; animation-delay: 1.8s; font-size: 24px; color: #ff3366; }
+.fh3 { left: 60px; animation-delay: 2.2s; font-size: 15px; }
+.fh4 { right: 50px; animation-delay: 0.8s; font-size: 22px; color: #ff99cc; }
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(20px) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-90px) scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* YALTIROQ UCHQUNLAR */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #ff3366, 0 0 30px #ff3366;
+    opacity: 0;
+    animation: sparkleEffect 2.5s ease-in-out infinite;
+}
+
+.sp1 { top: 40px; left: 80px; animation-delay: 1s; }
+.sp2 { bottom: 50px; right: 70px; animation-delay: 1.6s; }
+.sp3 { top: 100px; right: 40px; animation-delay: 2s; }
+
+@keyframes sparkleEffect {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) translateY(-50px);
+        opacity: 0;
+    }
+}
